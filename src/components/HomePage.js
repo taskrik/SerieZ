@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getSeries } from '../actions/popular';
 import CategoryList from '../shared/CategoryList';
-import LoadingSpinner from '../shared/LoadingSpinner';
 
 const HomeHeader = () => {
   return (
