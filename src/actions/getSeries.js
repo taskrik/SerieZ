@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import { API_KEY, API_LINK } from 'react-native-dotenv';
 
-const popular = {
+const series = {
   WILL_GET_SERIES: 'popular/WILL_GET_SERIES',
   DID_GET_SERIES: 'popular/DID_GET_SERIES',
   FAILED_TO_GET_SERIES: 'popular/FAILED_TO_GET_SERIES',
@@ -13,11 +13,11 @@ const popular = {
   FAILED_TO_GET_TOP_RATED: 'popular/FAILED_TO_GET_TOP_RATED',
 };
 
-export default popular;
+export default series;
 
 export const getSeries = () => (dispatch) => {
   dispatch({
-    type: popular.WILL_GET_SERIES,
+    type: series.WILL_GET_SERIES,
   });
 
   const popularUrl = `${API_LINK}` + 'tv/popular?api_key=' + `${API_KEY}`;
@@ -34,35 +34,35 @@ export const getSeries = () => (dispatch) => {
         const topRatedData = responses[1];
         if (popularData) {
           dispatch({
-            type: popular.DID_GET_POPULAR,
+            type: series.DID_GET_POPULAR,
             payload: popularData.data.results,
           });
         } else {
           dispatch({
-            type: popular.FAILED_TO_GET_POPULAR,
+            type: series.FAILED_TO_GET_POPULAR,
             error: 'Failed to fetch popular',
           });
         }
         if (topRatedData) {
           dispatch({
-            type: popular.DID_GET_TOP_RATED,
+            type: series.DID_GET_TOP_RATED,
             payload: topRatedData.data.results,
           });
         } else {
           dispatch({
-            type: popular.FAILED_TO_GET_TOP_RATED,
+            type: series.FAILED_TO_GET_TOP_RATED,
             error: 'Failed to fetch top rated',
           });
         }
         dispatch({
-          type: popular.DID_GET_SERIES,
+          type: series.DID_GET_SERIES,
           payload: topRatedData.data.results,
         });
       }),
     )
     .catch((error) => {
       dispatch({
-        type: popular.FAILED_TO_GET_SERIES,
+        type: series.FAILED_TO_GET_SERIES,
         error: error,
       });
     });
