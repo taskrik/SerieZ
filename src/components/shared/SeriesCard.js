@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-const SeriesCard = ({ title, image }) => {
+const SeriesCard = ({ title, image, id, navigation }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('SerieDetails', { title, id })}>
       <View style={styles.cardContainer}>
         <Image
           source={{ uri: `https://image.tmdb.org/t/p/w1280/${image}` }}

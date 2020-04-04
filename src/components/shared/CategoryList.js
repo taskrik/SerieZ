@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import SeriesCard from './SeriesCard';
 import LoadingSpinner from './LoadingSpinner';
 
-const CategoryList = ({ title, data, loading }) => {
+const CategoryList = ({ title, data, loading, navigation }) => {
   return (
     <View style={styles.categoryContainer}>
       <Text style={styles.categoryText}>{title}</Text>
@@ -16,7 +16,12 @@ const CategoryList = ({ title, data, loading }) => {
           horizontal
           data={data}
           renderItem={({ item }) => (
-            <SeriesCard title={item.name} image={item.poster_path} />
+            <SeriesCard
+              title={item.name}
+              image={item.poster_path}
+              id={item.id}
+              navigation={navigation}
+            />
           )}
           keyExtractor={(item) => item.id.toString()}
         />

@@ -3,8 +3,8 @@ import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getSeries } from '../actions/popular';
-import CategoryList from '../shared/CategoryList';
+import { getSeries } from '../actions/getSeries';
+import CategoryList from './shared/CategoryList';
 
 const HomeHeader = () => {
   return (
@@ -27,7 +27,7 @@ const HomeHeader = () => {
   );
 };
 
-const HomePage = () => {
+const HomePage = (props) => {
   const { gettingPopular, gettingTopRated } = useSelector(
     (state) => state.series,
   );
@@ -46,11 +46,13 @@ const HomePage = () => {
         title={'Most Popular'}
         data={popular}
         loading={gettingPopular}
+        navigation={props.navigation}
       />
       <CategoryList
         title={'Top Rated'}
         data={topRated}
         loading={gettingTopRated}
+        navigation={props.navigation}
       />
     </ScrollView>
   );
