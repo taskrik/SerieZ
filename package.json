@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clean-install": "rm -rf node_modules && rm -rf build && rm -rf ios/build && rm -rf android/app/build && rm -rf ~/.gradle/caches && rm -rf $TMPDIR/react-* && yarn cache clean --force && watchman watch-del-all && yarn"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
