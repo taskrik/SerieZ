@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import { getDetails } from '../actions/serieDetails';
 import LoadingSpinner from './shared/LoadingSpinner';
-import { Rating } from './shared/Rating';
 
 class SerieDetails extends Component {
   state = {
@@ -90,10 +89,6 @@ class SerieDetails extends Component {
                   </Text>
                 ))}
               </View>
-              <Rating
-                rating={serieDetails.vote_average}
-                ratingCount={serieDetails.vote_count}
-              />
               <View style={styles.status}>
                 <Text style={styles.text}>Status: </Text>
                 <Text style={styles.text}>{serieDetails.status}</Text>
@@ -177,5 +172,16 @@ const styles = {
     borderBottomWidth: 0.5,
     borderColor: 'grey',
     paddingVertical: 10,
+  },
+  genreView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  status: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 5,
   },
 };
