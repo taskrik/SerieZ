@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { nextEpisode } from '../../utils/NextEpisodeCounter';
 
 const EpisodeInfo = ({ episodeData }) => {
   if (episodeData) {
@@ -20,7 +21,7 @@ const EpisodeInfo = ({ episodeData }) => {
         </View>
         <View style={styles.infoContainer}>
           <Text style={styles.text}>Next episode on air:</Text>
-          <Text style={styles.text}>{air_date}</Text>
+          <Text style={styles.text}>{nextEpisode(air_date)}</Text>
         </View>
       </Animatable.View>
     );
