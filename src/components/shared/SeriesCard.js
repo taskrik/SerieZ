@@ -4,16 +4,16 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 const SeriesCard = ({ title, image, id, navigation }) => {
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('SerieDetails', { title, id })}>
+      onPress={() => navigation.navigate('SerieDetails', { id })}>
       <View style={styles.cardContainer}>
         <Image
           source={{ uri: `https://image.tmdb.org/t/p/w1280/${image}` }}
           style={styles.cardImage}
           resizeMode="contain"
         />
-        <View style={styles.cardTitleContainer}>
-          <Text style={styles.cardTitle}>{title}</Text>
-        </View>
+      </View>
+      <View style={styles.cardTitleContainer}>
+        <Text style={styles.cardTitle}>{title}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -28,7 +28,10 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5,
   },
-  cardImage: { width: 190, height: 250 },
+  cardImage: {
+    width: 190,
+    height: 250,
+  },
   cardTitleContainer: {
     flex: 1,
     alignItems: 'center',

@@ -6,7 +6,7 @@ import {
 import * as React from 'react';
 
 import HomePage from '../components/HomePage';
-import SerieDetails from '../components/SerieDetails';
+import SerieDetails from '../components/seriesDetails/SerieDetails';
 
 const Stack = createStackNavigator();
 
