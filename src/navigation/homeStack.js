@@ -2,9 +2,7 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
-
 import * as React from 'react';
-
 import HomePage from '../components/HomePage';
 import SerieDetails from '../components/seriesDetails/SerieDetails';
 
