@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  View,
+  StatusBar,
+} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -40,28 +46,32 @@ const HomePage = (props) => {
   }, [dispatch]);
 
   return (
-    <ScrollView style={styles.container}>
-      <HomeHeader />
-      <CategoryList
-        title={'Most Popular'}
-        data={popular}
-        loading={gettingPopular}
-        navigation={props.navigation}
-      />
-      <CategoryList
-        title={'Top Rated'}
-        data={topRated}
-        loading={gettingTopRated}
-        navigation={props.navigation}
-      />
-    </ScrollView>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView style={styles.container}>
+        <StatusBar barStyle="light-content" backgroundColor="#000" />
+        <HomeHeader />
+        <CategoryList
+          title={'Most Popular'}
+          data={popular}
+          loading={gettingPopular}
+          navigation={props.navigation}
+        />
+        <CategoryList
+          title={'Top Rated'}
+          data={topRated}
+          loading={gettingTopRated}
+          navigation={props.navigation}
+        />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: { flex: 1, backgroundColor: '#000' },
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#000',
   },
   text: {
     color: 'white',
