@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, ScrollView, View, Text } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { clearDetails, getDetails } from '../../actions/serieDetails';
