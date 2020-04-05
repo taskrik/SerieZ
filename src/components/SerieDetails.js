@@ -3,7 +3,7 @@ import { ScrollView, Text, View, Image, TouchableOpacity } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { connect } from 'react-redux';
 
-import { getDetails } from '../actions/serieDetails';
+import { getDetails, clearDetails } from '../actions/serieDetails';
 import LoadingSpinner from './shared/LoadingSpinner';
 
 class SerieDetails extends Component {
@@ -13,6 +13,11 @@ class SerieDetails extends Component {
   componentDidMount() {
     this.props.getDetails(this.props.route.params.id);
   }
+
+  componentWillUnmount() {
+    this.props.clearDetails();
+  }
+
   render() {
     const { gettingDetails, serieDetails } = this.props;
     const { readMore } = this.state;
@@ -44,16 +49,16 @@ class SerieDetails extends Component {
               style={styles.imageContainer}
               animation="bounceInRight"
               duration={1500}>
-              {serieDetails.backdrop_path && (
+              {serieDetails.poster_path && (
                 <Image
                   source={{
-                    uri: `https://image.tmdb.org/t/p/w1280/${serieDetails.backdrop_path}`,
+                    uri: `https://image.tmdb.org/t/p/w1280/${serieDetails.poster_path}`,
                   }}
                   style={styles.image}
-                  resizeMode="cover"
+                  resizeMode="contain"
                 />
               )}
-              {!serieDetails.backdrop_path && (
+              {!serieDetails.poster_path && (
                 <View style={styles.noImage}>
                   <Text style={[styles.text, styles.description]}>
                     No Image available
@@ -107,7 +112,9 @@ const mapStateToProps = (state) => ({
   serieDetails: state.serieDetails.serieDetails,
 });
 
-export default connect(mapStateToProps, { getDetails })(SerieDetails);
+export default connect(mapStateToProps, { getDetails, clearDetails })(
+  SerieDetails,
+);
 
 const styles = {
   outerContainer: {
@@ -144,10 +151,10 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
   },
-  image: { width: 350, height: 250, alignSelf: 'center', marginBottom: 40 },
+  image: { width: 350, height: 350, alignSelf: 'center', marginBottom: 40 },
   noImage: {
     width: 350,
-    height: 200,
+    height: 300,
     backgroundColor: '#6b6b6b6b',
     alignItems: 'center',
     justifyContent: 'center',

@@ -2,9 +2,10 @@ import Axios from 'axios';
 import { API_KEY, API_LINK } from 'react-native-dotenv';
 
 const serieDetails = {
-  WILL_GET_DETAILS: 'popular/WILL_GET_DETAILS',
-  DID_GET_DETAILS: 'popular/DID_GET_DETAILS',
-  FAILED_TO_GET_DETAILS: 'popular/FAILED_TO_GET_DETAILS',
+  WILL_GET_DETAILS: 'serieDetails/WILL_GET_DETAILS',
+  DID_GET_DETAILS: 'serieDetails/DID_GET_DETAILS',
+  FAILED_TO_GET_DETAILS: 'serieDetails/FAILED_TO_GET_DETAILS',
+  CLEAR_DETAILS: 'serieDetails/CLEAR_DETAILS',
 };
 
 export default serieDetails;
@@ -29,4 +30,10 @@ export const getDetails = (id) => (dispatch) => {
         error: error,
       });
     });
+};
+
+export const clearDetails = () => (dispatch) => {
+  dispatch({
+    type: serieDetails.CLEAR_DETAILS,
+  });
 };

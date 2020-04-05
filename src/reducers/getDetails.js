@@ -22,6 +22,12 @@ export default (state = {}, action) => {
         error: action.payload,
       };
 
+    case serieDetails.CLEAR_DETAILS:
+      return {
+        ...state,
+        serieDetails: null,
+      };
+
     default:
       return state;
   }
